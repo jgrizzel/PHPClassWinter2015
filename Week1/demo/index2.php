@@ -13,11 +13,17 @@ and open the template in the editor.
         <?php        
         $myvar = filter_input(INPUT_GET, 'p');
         
-         if ( $myvar === '1' ) {
+         if ( $myvar === '1' ) 
+         {
             echo 'Num 1'; 
-         } else {
-             echo 'my page title';
+         } 
+         else if ( $myvar === '2' )
+         {
+             echo 'Num 2';
          }   
+         else {
+             echo 'my page title';
+         }
         ?>
     </body>
 </html>
