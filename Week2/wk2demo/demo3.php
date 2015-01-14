@@ -25,10 +25,10 @@ and open the template in the editor.
         
         $err_msgs = '';
         
-        if (true)
-        {
-            $err_msgs .= '<p>'
-        }
+       // if (true)
+       // {
+        //    $err_msgs .= '<p>'
+        //}
         
         
         
