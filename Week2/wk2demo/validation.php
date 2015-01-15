@@ -19,8 +19,8 @@
            $err_msg .= '<p>Please enter an email</p>';}
                     
            if ( !is_numeric($num) || empty($num) ) {
-           $err_msg .= '<p>Please enter a num</p>';}
+           $err_msg .= '<p>Please enter a number</p>';}
                     
         }
         
-        ?>
+        echo '<h1>',$err_msg,'</h1>';
