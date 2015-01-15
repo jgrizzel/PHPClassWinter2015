@@ -10,7 +10,12 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
+        <?php   
+        $email='';
+        $fname='';
+        $number=0;
         
+        ?>
         <form action="post_process.php" method="post">
             
             Name: <input name="fname" type="text" value="" />
@@ -23,6 +28,6 @@ and open the template in the editor.
         </form>
         
         
-     <?php   ?>
+     
     </body>
 </html>
