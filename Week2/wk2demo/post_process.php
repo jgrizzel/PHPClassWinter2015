@@ -21,6 +21,11 @@ and open the template in the editor.
             }
             
             include './validation.php';
+            
+            if (empty ($err_msg))
+            {
+                include './POST.php';
+            }
         ?>
     </body>
 </html>
