@@ -16,7 +16,8 @@ and open the template in the editor.
             Name: <input name="fname" type="text" value="" />
             <br />
             Email: <input name="email" type="text" value="" />
-            
+            <br />
+            Number: <input name="number" type="number" value="" />
             
             <input type="submit" value="submit" />
         </form>
