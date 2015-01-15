@@ -23,7 +23,7 @@
            if ( !is_string($email) || empty($email) ) {
            $err_msg .= '<p>Please enter an email</p>';}
                     
-           if ( !is_string($num) || empty($num) ) {
+           if ( !is_numeric($num) || empty($num) ) {
            $err_msg .= '<p>Please enter a num</p>';}
                     
         }
