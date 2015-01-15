@@ -25,6 +25,15 @@ and open the template in the editor.
             if (empty ($err_msg))
             {
                 include './POST.php';
+                exit();
+            }
+            
+            if ( isset($_POST['fname'] ) ) {
+                echo $_POST['fname'];
+            }
+            
+             if ( isset($_POST['email'] ) ) {
+                echo $_POST['email'];
             }
         ?>
     </body>
