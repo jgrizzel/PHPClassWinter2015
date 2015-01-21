@@ -6,27 +6,9 @@
     <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
 <body>
-    <?php 
-    include'./index.html';
-    $product_description= '';
-    $list_price_formatted='';
-    $discount_percent_formatted='';
-    $discount_formatted='';
-    $discount_price_formatted='';
-    
-    if(!empty($_POST))
-    {
-    $product_description= $_POST['product_description'];
-    $list_price_formatted=$_POST['list_price'];
-    $discount_percent_formatted=$_POST['discount_percent'];
-    $discount_formatted=$_POST['$list_price*($discount_percent/100)'];
-    $discount_price_formatted=$_POST['$discount_price_formatted'];
-      
-    }
-    ?>
     <div id="content">
         <h1>This page is under construction</h1>
-         
+
         <label>Product Description:</label>
         <span><?php echo $product_description; ?></span><br />
 
@@ -37,7 +19,7 @@
         <span><?php echo $discount_percent_formatted; ?></span><br />
 
         <label>Discount Amount:</label>
-        <span><?php  echo $discount_formatted; ?></span><br />
+        <span><?php echo $discount_formatted; ?></span><br />
 
         <label>Discount Price:</label>
         <span><?php echo $discount_price_formatted; ?></span><br />
