@@ -19,7 +19,11 @@
         $error_message = 'Interest rate must be a valid number.'; }
     else if ( $interest_rate <=0 || $interest_rate > 15 ) {
         $error_message = 'Interest rate must be equal to or greater than 0 and less than or equal to 15.'; }
-
+    //validate year entry
+       else if ( $years <=0 || $years > 50 ) {
+        $error_message = 'Years must be equal to or greater than 0 and less than or equal to 15.'; }
+        
+    
     // set error message to empty string if no invalid entries
     else {
         $error_message = ''; }
@@ -62,6 +66,9 @@
 
         <label>Future Value:</label>
         <span><?php echo $future_value_f; ?></span><br />
+        
+        <h5>'This calculation was done</h5> on '<?php$date = date('m/d/y')
+       ?>
     </div>
 </body>
 </html>
