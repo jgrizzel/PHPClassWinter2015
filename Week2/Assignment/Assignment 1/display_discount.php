@@ -14,6 +14,8 @@
     $discount_percent_formatted='';
     $discount_formatted='';
     $discount_price_formatted='';
+    if ( empty($product_description) ) {
+        $error_message = 'Product description is a required field.'; }
     
     if(!empty($_POST))
     {
