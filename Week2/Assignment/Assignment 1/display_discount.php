@@ -21,11 +21,7 @@
         $product_description= $_POST['product_description'];
         $list_price=$_POST['list_price'];
         $discount_percent=$_POST['discount_percent'];
-        
-        if (empty( $product_description) ) {
-        $error_message = 'Product description is a required field.'; }
-        
-        
+               
         $list_price_formatted='$'.number_format($list_price,2);
         $discount_percent_formatted=$_POST['discount_percent'].'%';
         $discount_formatted=$list_price*($discount_percent/100);
@@ -37,7 +33,8 @@
         <h1>Product Discount Calculator</h1>
          
         <label>Product Description:</label>
-        <span><?php echo $product_description; ?></span><br />
+        <span><?php echo $product_description;if (empty( $product_description) ) {
+        $error_message = 'Product description is a required field.'; } ?></span><br />
 
         <label>List Price:</label>
         <span><?php echo $list_price_formatted; ?></span><br />
