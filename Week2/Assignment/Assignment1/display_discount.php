@@ -28,6 +28,10 @@
         $discount_price_formatted=$list_price - $discount_formatted;
       
     }
+    if(empty ($product_description))
+    {
+        echo 'Please enter product description';
+    }
     ?>
     <div id="content">
         <h1>Product Discount Calculator</h1>
