@@ -17,7 +17,7 @@
     if ( empty($product_description) ) {
         $error_message = 'Product description is a required field.'; }
     
-    if(!empty($_POST))
+    else if(!empty($_POST))
     {
         $product_description= $_POST['product_description'];
         $list_price=$_POST['list_price'];

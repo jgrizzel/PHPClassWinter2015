@@ -13,6 +13,9 @@ and open the template in the editor.
 <body>
     <div id="content">
         <h1>Product Discount Calculator</h1>
+        <?php if (!empty($error_message)) { ?>
+        <p class="error"><?php echo $error_message; ?></p>
+    <?php } // end if ?>
         <form action="display_discount.php" method="post">
 
             <div id="data">
