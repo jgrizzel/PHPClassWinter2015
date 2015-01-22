@@ -68,6 +68,14 @@
         <span><?php echo $future_value_f; ?></span><br />
         <?php $date =date('m/d/y , h:i:sa')?>
         <h5>This calculation was done on <?php echo $date?></h5> 
+        
+
+<?php
+
+echo "<a href=\"index.php\">Back to the homepage</a>";
+
+?>
+
        
     </div>
 </body>
