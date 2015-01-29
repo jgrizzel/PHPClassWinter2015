@@ -3,30 +3,31 @@
     $investment = $_POST['investment'];
     $interest_rate = $_POST['interest_rate'];
     $years = $_POST['years'];
+    $error_message = '';
 
     // validate investment entry
     if ( empty($investment) ) {
-        $error_message = 'Investment is a required field.'; }
+        $error_message .= '<p>Investment is a required field.</p>'; }
     else if ( !is_numeric($investment) )  {
-        $error_message = 'Investment must be a valid number.'; }
+        $error_message .= '<p>Investment must be a valid number.</p>'; }
     else if ( $investment <= 0 ) {
-        $error_message = 'Investment must be greater than zero.'; }
+        $error_message .= '<p>Investment must be greater than zero.</p>'; }
 
     // validate interest rate entry
-    else if ( empty($interest_rate) ) {
-        $error_message = 'Interest rate is a required field.'; }
+     if ( empty($interest_rate) ) {
+        $error_message .= '<p>Interest rate is a required field.</p>'; }
     else if ( !is_numeric($interest_rate) )  {
-        $error_message = 'Interest rate must be a valid number.'; }
+        $error_message .= '<p>Interest rate must be a valid number.</p>'; }
     else if ( $interest_rate <=0 || $interest_rate > 15 ) {
-        $error_message = 'Interest rate must be equal to or greater than 0 and less than or equal to 15.'; }
-    //validate year entry
-       else if ( $years <=0 || $years > 50 ) {
-        $error_message = 'Years must be equal to or greater than 0 and less than or equal to 15.'; }
+        $error_message .= '<p>Interest rate must be equal to or greater than 0 and less than or equal to 15.</p>'; }
+    
+//validate year entry
+        
+        if ( $years <=0 || $years > 50 ) {
+        $error_message .= '<p>Years must be equal to or greater than 0 and less than or equal to 50.</p'; }
         
     
-    // set error message to empty string if no invalid entries
-    else {
-        $error_message = ''; }
+    
 
     // if an error message exists, go to the index page
     if ($error_message != '') {
