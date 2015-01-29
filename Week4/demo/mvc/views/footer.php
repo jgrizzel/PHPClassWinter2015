@@ -1,5 +1,5 @@
-  
-<?php echo 'Copyright',date('Y');?>
-</body>
-</html>
 
+<hr />
+    <?php echo 'Copyright ' , date('Y'); ?>
+    </body>
+</html>
