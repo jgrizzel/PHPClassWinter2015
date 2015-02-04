@@ -15,7 +15,7 @@
             $hidden = 'i am hidden';
             
         }
-        var_dump($fname);
+      // var_dump($fname);
         ?>
         
         <form action="#" method="post">
