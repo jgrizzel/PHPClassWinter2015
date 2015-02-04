@@ -17,7 +17,7 @@
 <form action="#" method="post">   
     ford <input type="radio" name="cars" value="ford"
                 
-                <?php
+        <?php
         if ( $car == 'ford' ) {
            echo $checked;
         }
@@ -27,7 +27,7 @@
     <br />
     kia <input type="radio" name="cars" value="kia"
                
-                 <?php
+        <?php
         if ( $car == 'kia' ) {
            echo $checked;
         }
@@ -36,7 +36,7 @@
                /> <br />
     honda <input type="radio" name="cars" value="honda"
                  
-                   <?php
+        <?php
         if ( $car == 'honda' ) {
            echo $checked;
         }
