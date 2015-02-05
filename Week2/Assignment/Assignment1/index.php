@@ -8,6 +8,9 @@
 <body>
     <div id="content">
         <h1>Product Discount Calculator</h1>
+        <?php if (!empty($error_message)) { ?>
+        <p class="error"><?php echo $error_message; ?></p>
+    <?php } // end if ?>
        
         <form action="display_discount.php" method="post">
 
@@ -16,10 +19,10 @@
                 <input type="text" name="product_description"/><br />
 
                 <label>List Price:</label>
-                <input type="number" name="list_price"/><br />
+                <input type="text" name="list_price"/><br />
 
                 <label>Discount Percent:</label>
-                <input type="number" name="discount_percent"/>%<br />
+                <input type="text" name="discount_percent"/>%<br />
             </div>
 
             <div id="buttons">
