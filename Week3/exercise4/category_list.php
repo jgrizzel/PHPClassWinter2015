@@ -32,6 +32,9 @@
             <th>Name</th>
             <th>&nbsp;</th>
         </tr>
+        <tr>
+            
+        </tr>
         
     <!-- add code for the rest of the table here -->
     
