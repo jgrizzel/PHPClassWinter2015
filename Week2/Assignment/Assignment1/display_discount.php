@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
 <body>
-    <?php 
+    <?php  
     $product_description= '';
     $list_price='';
     $discount_percent='';
@@ -21,10 +21,8 @@
     $discount_price_formatted='';
     $error_message='';
     
-    
-      
-     
-        
+
+    if(!empty($_POST)) {
         $product_description= $_POST['product_description'];
         $list_price=$_POST['list_price'];
         $discount_percent=$_POST['discount_percent'];
@@ -44,11 +42,11 @@
         // if an error message exists, go to the index page
         
 if ($error_message != '') {
-        include('index.html');
+        include('index.php');
         exit();
     }
     
-    if(!empty($_POST)) {     
+         
         $list_price_formatted='$'.number_format($list_price,2);
         $discount_percent_formatted=$_POST['discount_percent'].'%';
         $discount_formatted=$list_price*($discount_percent/100);
