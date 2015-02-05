@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+TEXT AREA DOES NOT GO IN THE TAGS.
+IT GOES BETWEEN THEM UNLIKE THE OTHERS.
 -->
 <html>
     <head>
@@ -11,7 +10,23 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        // put your code here
+            
+        
+            $comments = filter_input(INPUT_POST, 'comments');
+        
+            $comments = htmlspecialchars($comments);
+                     
+            
+            echo '<p>',nl2br($comments), '</p>'; 
         ?>
+        
+        
+         <form action="#" method="post">            
+        <textarea name="comments"><?php echo $comments;?></textarea>
+        <input type="submit" value="submit" />         
+            
+        </form>
+        
+        
     </body>
 </html>
