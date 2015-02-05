@@ -8,9 +8,11 @@
 
 <body>
     <?php
-        $investment = rand(0,100);
-        $interest_rate = rand(0,100);
-        $years = rand(0,100);
+    if(empty($_POST)){
+        $investment = rand(0,100000);
+        $interest_rate = rand(1,15);
+        $years = rand(1,50);
+    }
 ?>
     <div id="content">
     <h1>Future Value Calculator</h1>

@@ -1,4 +1,5 @@
 <?php
+
     // get the data from the form
     $investment = $_POST['investment'];
     $interest_rate = $_POST['interest_rate'];
