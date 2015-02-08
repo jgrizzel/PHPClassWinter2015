@@ -5,8 +5,8 @@
     if(!isset($category_id)) {
         $category_id = $_GET['category_id'];
         if (!isset($category_id)) {
-            $category_id = 1;
-        }
+           $category_id = 1;
+       }
     }
 
     // Get name for current category

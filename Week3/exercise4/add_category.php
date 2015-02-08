@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php
-        // put your code here
-        ?>
-    </body>
-</html>
+<?php
+$category_id = $_POST['category_id'];
+$name = $_POST['name'];
+
+require_once('database.php');
+    $query = "INSERT INTO categories (categoryName)
+              VALUES ('$name')";
+    $db->exec($query);
+    
+    include('category_list.php');
+    ?>
