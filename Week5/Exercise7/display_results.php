@@ -1,7 +1,13 @@
 <?php
     // get the data from the form
     $email = $_POST['email'];
-
+    $password = $_POST['password'];
+    $phone = $_POST['phone'];
+    
+    
+    
+       
+        
     // get the rest of the data for the form
 
     // for the heard_from radio buttons,
@@ -25,22 +31,43 @@
         <span><?php echo htmlspecialchars($email); ?></span><br />
 
         <label>Password:</label>
-        <span><!-- add PHP code here--></span><br />
+        <span><?php echo htmlspecialchars($password); ?></span><br />
 
         <label>Phone Number:</label>
-        <span></span><br />
+        <span><?php echo htmlspecialchars($phone); ?></span><br />
 
         <label>Heard From:</label>
-        <span></span><br />
+        <span><?php if (isset($_POST['heard_from']))
+        {
+           $heard_from=$_POST['heard_from'];
+         
+        }else {$heard_from = "Unknown";}
+        echo $heard_from;?> 
+        </span><br />
 
         <label>Send Updates:</label>
-        <span></span><br />
+        <span><?php if (isset($_POST['wants_updates'])){
+            $wants_updates='Yes';
+        }
+        else{$wants_updates='No';}
+        echo $wants_updates;       
+        
+        ?></span><br />
 
         <label>Contact Via:</label>
-        <span></span><br /><br />
+        <span><?php
+        $contact_via = $_POST['contact_via'];
+        echo $contact_via;
+        ?></span><br /><br />
 
         <span>Comments:</span><br />
-        <span></span><br />
+        <span><?php
+         $comments = $_POST['comments'];        
+        $comments = htmlspecialchars($comments);        
+        $comments = nl2br($comments, false);
+        echo $comments;
+    
+        ?></span><br />
         
         <p>&nbsp;</p>
     </div>
