@@ -16,7 +16,7 @@ $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "roo
         $results = $dbs->fetchAll(PDO::FETCH_ASSOC);
         
         /*
-         * $arry["key"] = 'value';
+          $arry["key"] = 'value';
       
         
         $array[0] = array(
