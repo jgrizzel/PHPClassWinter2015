@@ -20,7 +20,7 @@
             // remember to change the port
              $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
   
-            $dbs = $db->prepare('insert demo set name = :name, email = :email');  
+            $dbs = $db->prepare('insert into demo set name = :name, email = :email');  
 
             //collect the data to bind
             $name = $_POST['fullname'];

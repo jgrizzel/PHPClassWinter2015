@@ -19,7 +19,7 @@
             // remember to change the port
              $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
   
-            $dbs = $db->prepare('insert users set name = :fullname, email = :email, phone =:phone, zip =:zip');  
+            $dbs = $db->prepare('insert into users set name = :fullname, email = :email, phone =:phone, zip =:zip');  
  
             //collect the data to bind
             $name = $_POST['fullname'];
@@ -36,7 +36,7 @@
            if ( !is_numeric($zip) || empty($zip) ) {
            $err_msg .= '<p>Please enter a number</p>';}
         
-        echo '<h1>',$err_msg,'</h1>';
+        echo '<h5>',$err_msg,'</h5>';
         
          if (empty ($err_msg))
             {
@@ -54,6 +54,8 @@
                     echo '<h1> user ',$name, ' was added</h1>';
             } else {
                  echo '<h1> user ',$name, ' was <strong>NOT</strong> added</h1>';
+            
+                 var_dump($db->errorInfo());
             }       
         }
         
