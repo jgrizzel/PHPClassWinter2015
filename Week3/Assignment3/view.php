@@ -18,6 +18,7 @@ $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "roo
   echo '<table>';
        foreach ($results as $value) {  ?>
            <tr>
+              <td> <?php echo  $value["id"]; ?> </td>
                <td> <?php echo  $value["fullname"]; ?> </td>
                <td> <?php echo  $value["email"]; ?> </td>
                <td> <?php echo $value["phone"]; ?> </td>

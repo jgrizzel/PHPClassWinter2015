@@ -22,6 +22,7 @@
             $dbs = $db->prepare('insert into users set fullname = :fullname, email = :email, phone =:phone, zip =:zip');  
  
             //collect the data to bind
+            $id = ['id'];
             $name = $_POST['fullname'];
             $email = $_POST['email'];
             $phone = $_POST['phone'];
