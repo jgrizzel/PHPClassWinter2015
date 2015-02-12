@@ -15,7 +15,7 @@ $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "roo
           
         $results = $dbs->fetchAll(PDO::FETCH_ASSOC);
       
-   
+  echo '<table>';
        foreach ($results as $value) {  ?>
            <tr>
                <td> <?php echo  $value["fullname"]; ?> </td>
@@ -23,9 +23,11 @@ $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "roo
                <td> <?php echo $value["phone"]; ?> </td>
                <td> <?php echo  $value["zip"]; ?> </td>
            </tr>   
-        
 
-    <?php }}
+
+    <?php }
+    echo '</table>';
+       }
             else {echo 'No results found';}
     ?>
     
