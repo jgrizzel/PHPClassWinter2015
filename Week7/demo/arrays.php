@@ -12,16 +12,23 @@
         
         $arr[0] = 'hello';
         $arr[1] = 'world';
-        $arr["cars"] = 'ford';
+        $arr["cars"] = array();
+        
+        $arr["cars"][0] = 'ford';
+        $arr["cars"][2] = 'chevy';
+        $arr["cars"][5] = 'honda';
+        
         
         print_r($arr);
         
-        echo $arr[0] , ' ' , $arr[1] , ' ', $arr["cars"];
+        echo $arr[0] , ' ' , $arr[1] , ' ', $arr["1"];
         
         
         foreach ($arr as $key => $value) {
             if ( $key === 2 ) break;
-             echo '<br />', $key, ' =>',   $value ;    
+            if ( !is_array($value) ) {
+             echo '<br />', $key, ' =>',   $value ;   
+            }
         }
          
         
