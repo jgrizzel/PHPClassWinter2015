@@ -14,24 +14,26 @@ switch ($action) {
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         
-       $err_msg ='';
-        if ( !is_string($name) || empty($name) ) {
-           $err_msg .= '<p>Please enter a name</p>';}
-echo $err_msg;
+       
         /*************************************************
          * validate and process the name
          ************************************************/
         // 1. make sure the user enters a name
+         $err_msg ='';
+        if ( !is_string($name) || empty($name) ) {
+           $err_msg .= '<p>Please enter a name</p>';
+        echo $err_msg;}
         // 2. display the name with only the first letter capitalized
+         $name = strtolower($name);
+        $name = ucwords($name);
         
            if(empty($err_msg))
             {
-                 $i = strpos($name, '');
-                if($i == false){
-                $message='no space found';
+                 $i = strpos($name, ' ');
+                if($i === false){
+                $first_name = $name;
                 }else{
                 $first_name = substr($name, 0, $i);
-                $last_name = substr($name, $i+1);
                 }  
             }
 
@@ -42,16 +44,26 @@ echo $err_msg;
         // 2. make sure the email address has at least one @ sign and one dot character
             $err_msg ='';
         if (empty($email) ) {
-           $err_msg .= '<p>Please enter a name</p>';}
-           if(empty ($err_msg)){
-               
-               
-           }
+           $err_msg .= '<p>Please enter an email</p>';}
+           else if ( filter_var($email, FILTER_VALIDATE_EMAIL) == false ) {
+               $err_msg .= '<p>Email must have an @ and contain at least one dot</p>';
+               }
 
         /*************************************************
          * validate and process the phone number
          ************************************************/
         // 1. make sure the user enters at least seven digits, not including formatting characters
+        $phone = str_replace('-', '', $phone);
+        $phone = str_replace('(', '', $phone);
+        $phone = str_replace(')', '', $phone);
+        $phone = str_replace(' ', '', $phone);
+        
+        if (strlen($phone) < 7) {
+        $err_msg .= '<p>Phone number must be seven digits long</p>';
+        }
+               
+               
+               
         // 2. format the phone number like this 123-4567 or this 123-456-7890
 
         /*************************************************
