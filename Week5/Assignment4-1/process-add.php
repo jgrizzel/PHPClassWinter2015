@@ -27,7 +27,7 @@
             {
                 $err_msg .= '<p>Please enter an email</p>';
             }
-           if (  $password < 4 || empty($password) ) 
+           if (   strlen($password) < 4 || empty($password) ) 
             {
                 $err_msg .=  '<p>Password must be greater than 3 characters</p>';
             }
