@@ -9,7 +9,7 @@
             if ( !empty($_POST) ) {
                 
                 $email = filter_input(INPUT_POST, 'email');
-                $pdo = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3308;", "root", "");
+                $pdo = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
                 $dbs = $pdo->prepare('select * from demo where email = :email');  
                 $dbs->bindParam(':email', $email, PDO::PARAM_STR);
                 
