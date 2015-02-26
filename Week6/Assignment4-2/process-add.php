@@ -21,7 +21,6 @@
  
             //collect the data to bind
             $email = $_POST['email'];
-            //$email = filter_input(INPUT_POST, 'email');
             $password = $_POST['password'];
             
             if ( filter_var($email, FILTER_VALIDATE_EMAIL) == false ) {
