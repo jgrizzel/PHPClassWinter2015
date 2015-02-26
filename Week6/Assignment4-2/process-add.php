@@ -41,10 +41,10 @@
             }
          if (empty ($err_msg))
             {
-             $password = filter_input(INPUT_POST, 'password');
+                $password = filter_input(INPUT_POST, 'password');
+                // add validaion
+                $password = sha1($password);  
         
-        // add validaion
-        $password = sha1($password);  
         
             // you must bind the data before you execute
             $dbs->bindParam(':email', $email, PDO::PARAM_STR);

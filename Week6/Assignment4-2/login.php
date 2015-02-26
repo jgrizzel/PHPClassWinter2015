@@ -9,9 +9,10 @@
             if ( !empty($_POST) ) {
                 
                 $email = filter_input(INPUT_POST, 'email');
-                $password = filter_input(INPUT_POST, 'password');
+                $password = filter_input(INPUT_POST, 'password'); 
+                $password = sha1($password);
                 $pdo = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
-                $dbs = $pdo->prepare('select * from signup where email = :email, password = :password');
+                $dbs = $pdo->prepare('select * from signup where email = :email and password = :password');                
                 $dbs->bindParam(':email', $email, PDO::PARAM_STR);
                 $dbs->bindParam(':password', $password, PDO::PARAM_STR);
                 
