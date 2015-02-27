@@ -14,6 +14,10 @@ switch ($action) {
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         
+        $name = trim($name);
+        $email = trim($email);
+        $email = trim($email);
+        
        
         /*************************************************
          * validate and process the name
@@ -59,12 +63,22 @@ switch ($action) {
         $phone = str_replace(' ', '', $phone);
         
         if (strlen($phone) < 7) {
-        $err_msg .= '<p>Phone number must be seven digits long</p>';
+        $err_msg .= '<p>Phone number must have at least seven digits long</p>';
         }
                
                
                
         // 2. format the phone number like this 123-4567 or this 123-456-7890
+        if (strlen($phone) == 7) {
+            $part1 = substr($phone, 0, 3);
+            $part2 = substr($phone, 3);
+            $phone = $part1 . '-' . $part2;
+        } else {
+            $part1 = substr($phone, 0, 3);
+            $part2 = substr($phone, 3, 3);
+            $part3 = substr($phone, 6);
+            $phone = $part1 . '-' . $part2 . '-' . $part3;
+        }
 
         /*************************************************
          * Display the validation message
