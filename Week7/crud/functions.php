@@ -10,8 +10,8 @@ function emailIsValid( $email ) {
 
 
 function phoneIsValid( $phone ) {
-    
-     if ( is_numeric($phone) && !empty($phone) ) {
+    $pattern = '/^\(?([2-9]{1}[0-9]{2})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/';
+     if ( preg_match($pattern, $phone) != 0 ) {
         return true;
     } else {
         return false;
@@ -69,4 +69,47 @@ function addNewComments($fullname,$email,$comments,$phone) {
     } else {
         return false;
     }     
+}
+
+
+function readAllComments(){
+    $results = array();
+    
+    $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
+    $dbs = $db->prepare('select * from comments'); 
+    
+    if ( $dbs->execute() && $dbs->rowCount() > 0 ) {          
+        $results = $dbs->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    return $results;
+}
+
+
+function deleteComment( $id ) {
+    $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
+    $dbs = $db->prepare('delete from comments where id = :id'); 
+    
+    $dbs->bindParam(':id', $id, PDO::PARAM_INT);
+    
+    if ( $dbs->execute() && $dbs->rowCount() > 0 ) {          
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function getComment( $id ) {
+    $results = array();
+    
+    $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
+    $dbs = $db->prepare('select * from comments where id = :id limit 1'); 
+    
+    $dbs->bindParam(':id', $id, PDO::PARAM_INT);
+    
+    if ( $dbs->execute() && $dbs->rowCount() > 0 ) {          
+        $results = $dbs->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    return $results;
 }

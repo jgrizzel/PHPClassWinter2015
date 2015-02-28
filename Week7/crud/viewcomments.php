@@ -1,9 +1,9 @@
+<?php
+    include './functions.php';    
+    $comments = readAllComments();
+?>
+
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -12,19 +12,32 @@ and open the template in the editor.
     <body>
         <?php
         // put your code here
-        $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
-        $dbs = $db->prepare('select * from comments');
+        //print_r($comments);
         
-         if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
-          
-        $results = $dbs->fetchAll(PDO::FETCH_ASSOC);
-         
-        print_r($results);
-         }
-         
-        
-        
-        
+        if ( count($comments) == 0 ) {
+            echo '<p>No comments</p>';
+        }
+        if ( count($comments) > 0 ) {
+            echo '<table border="1">';
+            echo '<tr><th>Name</th><th>email</th><th>comments</th><th>phone</th><th></th><th></th></tr>';
+                   
+            foreach ($comments as $value) {
+                echo '<tr>';
+                echo '<td>',$value['name'] , '</td>';
+                echo '<td>',$value['email'] , '</td>';
+                echo '<td>',$value['comments'] , '</td>';
+                echo '<td>',$value['phone'] , '</td>';
+                echo '<td>'
+                    . '<form action="updateComment.php" method="post">'
+                    . '<input type="hidden" name="id" value="',$value['id'],'" /> '
+                    . '<input type="submit" value="update" /> '
+                    . '</form></td>';
+                echo '<td><a href="deleteComment.php?id=',$value['id'],'">Delete</a></td>';
+                echo '</tr>';
+            }
+            
+             echo '</table>';
+        }
         
         ?>
     </body>
