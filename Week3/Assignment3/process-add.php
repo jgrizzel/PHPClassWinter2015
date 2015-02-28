@@ -56,7 +56,7 @@
             } else {
                  echo '<h1> user ',$name, ' was <strong>NOT</strong> added</h1>';
             
-                 var_dump($db->errorInfo());
+                 //var_dump($db->errorInfo());
             }       
         }
         
