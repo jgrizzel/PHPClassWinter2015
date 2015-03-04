@@ -10,13 +10,13 @@
     $comments = '';
     
     if ( !empty($_POST) ) {
-        
+        // collect the data
         $fullname = filter_input(INPUT_POST, 'fullname');
         $email = filter_input(INPUT_POST, 'email');
         $comments = filter_input(INPUT_POST, 'comments');
         $phone = filter_input(INPUT_POST, 'phone');
         
-        
+        //Validate the data
         if ( !emailIsValid($email) ) {
             $error_msgs[] = 'Email is not Valid.';
         }
@@ -26,7 +26,7 @@
         }
         
         if ( !phoneIsValid($phone) ) {
-            $error_msgs[] = 'Please enter your Phone number.';
+            $error_msgs[] = 'Please enter your Phone number in format xxx-xxx-xxxx.';
         }
         
         

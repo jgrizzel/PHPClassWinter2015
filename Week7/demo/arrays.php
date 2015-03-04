@@ -32,6 +32,10 @@
         }
          
         
+        //shortcut to assing array values
+        $states = array('RI', 'MA', 'CT');
+        // shortcut for associative values
+        $states = array('RI'=>'Rhode Island', 'MA'=>'MASSACHUSETTS', 'CT'=>'CONNECTICUT');
         ?>
     </body>
 </html>

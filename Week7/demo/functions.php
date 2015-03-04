@@ -32,12 +32,6 @@
                 }
             }
             
-            //OR
-            //function validateEmail( $email ) {
-               // return ( filter_var($email, FILTER_VALIDATE_EMAIL) != false ); 
-           // }
-               
-            
             $email = 'tettet.com';
             if ( validateEmail( $email ) ) {
                  displayFormattedText('email is valid'); 

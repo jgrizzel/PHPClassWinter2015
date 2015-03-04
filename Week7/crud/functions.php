@@ -113,3 +113,25 @@ function getComment( $id ) {
     
     return $results;
 }
+
+
+
+function updateComments($id, $fullname,$email,$comments,$phone) {
+    // remember to change the port
+    $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
+    $dbs = $db->prepare('update comments set name = :name, email = :email, comments =:comments, phone =:phone where id = :id'); 
+
+    // you must bind the data before you execute
+    $dbs->bindParam(':id', $id, PDO::PARAM_INT);
+    $dbs->bindParam(':name', $fullname, PDO::PARAM_STR);
+    $dbs->bindParam(':email', $email, PDO::PARAM_STR);
+    $dbs->bindParam(':comments', $comments, PDO::PARAM_STR);
+    $dbs->bindParam(':phone', $phone, PDO::PARAM_STR);
+
+    // When you execute remember that a rowcount means a change was made
+     if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
+        return true;
+    } else {
+        return false;
+    }     
+}
