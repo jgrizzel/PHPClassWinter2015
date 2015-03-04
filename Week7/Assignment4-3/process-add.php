@@ -7,39 +7,40 @@
     <body>
         <?php        
         // do error handling before you continue
-            $err_msg = '';
+            $errors = array();         
             if (empty($_POST) ) {
-               $err_msg = 'Please enter Data';
+               $errors[] = 'Please enter Data';
                include './sign-up-page.php';
               exit();
             }            
-            if(!empty($_POST)){
+            if(!empty($_POST))
+                {
             // remember to change the port
              $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
   
             $dbs = $db->prepare('insert into signup set email = :email, password = :password');  
- 
+            
             //collect the data to bind
             $email = $_POST['email'];
             $password = $_POST['password'];
             
             if ( filter_var($email, FILTER_VALIDATE_EMAIL) == false ) {
-                $err_msg .= '<p>Please enter a valid email</p>';
+                $errors[] = 'Please enter a valid email';
             } 
            if ( !is_string($email) || empty($email) )               
             {
-                $err_msg .= '<p>Please enter an email</p>';
+                $errors[] = 'Please enter an email';
             }
             
            if (   strlen($password) < 4 || empty($password) ) 
             {
-                $err_msg .=  '<p>Password must be greater than 3 characters</p>';
-            }
-        
-        echo '<p>',$err_msg,'</p>';
+                $errors[] =  'Password must be greater than 3 characters';
+            }      
+       
         include './sign-up-page.php';
             }
-         if (empty ($err_msg))
+            
+         if (empty ($errors))
             {
                 $password = filter_input(INPUT_POST, 'password');
                 // add validaion
