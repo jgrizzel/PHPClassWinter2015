@@ -6,6 +6,8 @@
     </head>
     <body>
         <?php
+        include './header.php';
+        
             if ( !empty($_POST) ) {            
                 
                 $email = filter_input(INPUT_POST, 'email');
@@ -31,6 +33,10 @@
           }else
           {
               echo '<h1> Log in was successful</h1>';
+              session_start();
+              $_SESSION['loggedin'] = true;
+              include'./admin.php';
+              exit();
           }
             
           }
