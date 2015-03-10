@@ -37,7 +37,7 @@
                 $errors[] =  'Password must be greater than 3 characters';
             }      
        
-        include './sign-up-page.php';
+        //include './sign-up-page.php';
             }
             
          if (empty ($errors))
