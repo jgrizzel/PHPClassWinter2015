@@ -12,7 +12,8 @@
                $errors[] = 'Please enter Data';
                include './sign-up-page.php';
               exit();
-            }            
+            }  
+            
             if(!empty($_POST))
                 {
             // remember to change the port
@@ -24,20 +25,67 @@
             $email = $_POST['email'];
             $password = $_POST['password'];
             
-            if ( filter_var($email, FILTER_VALIDATE_EMAIL) == false ) {
-                $errors[] = 'Please enter a valid email';
-            } 
-           if ( !is_string($email) || empty($email) )               
+            //Function to validate the email
+            function emailIsValid( $email ) {
+            if ( !is_string($email) || empty($email)  ) {
+                
+                return false;
+                
+            } else {
+                
+                if (  filter_var($email, FILTER_VALIDATE_EMAIL) == false)               
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+        }
+        
+        //Validates if password is valid
+            function passwordIsValid ($password){
+                if (   strlen($password) < 4 || empty($password) ) 
             {
-                $errors[] = 'Please enter an email';
+                return false;
+            }
+            else 
+            {
+                return true;
+            }
             }
             
-           if (   strlen($password) < 4 || empty($password) ) 
+            
+             function emailExist($email){
+                $pdo = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
+                $dbs = $pdo->prepare('select * from signup where email = :email');                
+                $dbs->bindParam(':email', $email, PDO::PARAM_STR);
+                
+                 if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
+                        return true;
+                } else {
+                     return false;
+                }                
+            }
+            
+            
+            if(emailExist($email)){
+                $errors[] = 'Email already exist.';
+            }
+            
+           
+           if ( !emailIsValid($email) )               
+            {
+                $errors[] = 'Please enter a valid email.';
+            }
+            
+           if (  !passwordIsValid($password) ) 
             {
                 $errors[] =  'Password must be greater than 3 characters';
             }      
        
-        //include './sign-up-page.php';
+            include './sign-up-page.php';
             }
             
          if (empty ($errors))
@@ -57,7 +105,7 @@
                     echo '<p> The email ',$email, ' was added</p>';
             } else {
                  echo '<h2> The email ',$email, ' was <strong>NOT</strong> added</h2>';
-            
+                 
             }       
         }
         

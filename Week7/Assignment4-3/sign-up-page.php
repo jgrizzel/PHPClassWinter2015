@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,8 +9,10 @@
         
         <h1> Sign Up! </h1>
         
+        
+        
           <?php 
-         if (count ($errors) > 0) { ?>
+         if (isset($errors) && count ($errors) > 0) { ?>
     <h2>Errors:</h2>
     <ul>
         <?php 
@@ -26,17 +22,6 @@
         <?php } ?>
     </ul>
           <?php } ?>
-        
-        
-        
-        <?php
-              //put your code here
-        //if ( isset($err_msg) ) {
-            //echo '<p>',$err_msg,'</p>';
-            
-            
-        //}
-        ?>
         
                 
         <form action="process-add.php" method="post">
