@@ -6,7 +6,8 @@
     </head>
     <body>
         <?php
-         include './classes/Validation.class.php';
+         //include './classes/Validation.class.php';
+         include'./classes/Validation.class.php';
          include './classes/Messages.class.php';
          
          $validate = new Validation();
