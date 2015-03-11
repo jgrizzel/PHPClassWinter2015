@@ -10,7 +10,7 @@
             $errors = array();         
             if (empty($_POST) ) {
                $errors[] = 'Please enter Data';
-               include './sign-up-page.php';
+               include './sign-up-page.php';               
               exit();
             }  
             
@@ -25,62 +25,22 @@
             $email = $_POST['email'];
             $password = $_POST['password'];
             
-            //Function to validate the email
-            function emailIsValid( $email ) {
-            if ( !is_string($email) || empty($email)  ) {
-                
-                return false;
-                
-            } else {
-                
-                if (  filter_var($email, FILTER_VALIDATE_EMAIL) == false)               
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-        }
-        
-        //Validates if password is valid
-            function passwordIsValid ($password){
-                if (   strlen($password) < 4 || empty($password) ) 
-            {
-                return false;
-            }
-            else 
-            {
-                return true;
-            }
-            }
+            include './validator.class.php';
+            $validate = new Validation();
             
+         
             
-             function emailExist($email){
-                $pdo = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
-                $dbs = $pdo->prepare('select * from signup where email = :email');                
-                $dbs->bindParam(':email', $email, PDO::PARAM_STR);
-                
-                 if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
-                        return true;
-                } else {
-                     return false;
-                }                
-            }
-            
-            
-            if(emailExist($email)){
+            if($validate->emailExist($email)){
                 $errors[] = 'Email already exist.';
             }
             
            
-           if ( !emailIsValid($email) )               
+           if ( !$validate->emailIsValid($email) )               
             {
                 $errors[] = 'Please enter a valid email.';
             }
             
-           if (  !passwordIsValid($password) ) 
+           if ( !$validate->passwordIsValid($password) ) 
             {
                 $errors[] =  'Password must be greater than 3 characters';
             }      
