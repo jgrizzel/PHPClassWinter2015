@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
+
         <a href="sign-up-page.php">Sign Up</a>&nbsp;&nbsp;
         <?php
 if ( isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true ) {
@@ -18,13 +12,12 @@ if ( isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true ) {
    
     if ( $logout == 1 ) {
        $_SESSION['loggedin'] = false;       
-       include'./login.php';
+        header('Location: login.php');
     }
     
     
 ?>
         <br />
         <br/>
-    </body>
-</html>
+
 

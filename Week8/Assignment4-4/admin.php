@@ -6,11 +6,12 @@
     </head>
     <body>
         <?php
+        session_start();
         // put your code here
         if ( !isset($_SESSION['loggedin']) 
                 || $_SESSION['loggedin'] !== true 
             ) {
-            include_once('login.php');
+            header('Location: login.php');
             exit();
             //die('Access not allowed');
         }

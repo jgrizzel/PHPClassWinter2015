@@ -6,6 +6,7 @@
     </head>
     <body>
         <?php
+        session_start();
         include './header.php';
         
             if ( !empty($_POST) ) {            
@@ -33,9 +34,9 @@
           }else
           {
               echo '<h1> Log in was successful</h1>';
-              session_start();
+              
               $_SESSION['loggedin'] = true;
-              include'./admin.php';
+              header('Location: admin.php');
               exit();
           }
             
