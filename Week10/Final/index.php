@@ -3,26 +3,28 @@
 /*Joshua Grizzel*/
 
 
-/*include './functions.php';
+//include './functions.php';
+//include './display_results.php';
+
     
-    $error_msgs = array();
-    $sucess_msg = '';
+    //$error_msgs = array();
+    //$sucess_msg = '';
     
-    
-    $email = '';
-    $phone = '';
-    $heard_from = '';
-    $contact_via = '';
-    $comments = '';
-    
-     if ( !empty($_POST) ) {
-        // collect the data
-        $email = filter_input(INPUT_POST, 'email');
+     $email = filter_input(INPUT_POST, 'email');
         $phone = filter_input(INPUT_POST, 'phone');
         $heard_from = filter_input(INPUT_POST, 'heard_from');
         $contact_via = filter_input(INPUT_POST, 'contact_via');
         $comments = filter_input(INPUT_POST, 'comments');
         
+    //$email = '';
+    //$phone = '';
+    //$heard_from = '';
+    //$contact_via = '';
+    //$comments = '';
+    /*
+     if ( !empty($_POST) ) {
+        // collect the data
+       
         
         //Validate the data
         if ( !emailIsValid($email) ) {
@@ -47,7 +49,8 @@
             $addedUsers = addUser($email,$phone,$heard_from,$contact_via,$comments);
             
             if ( $addedUsers === true  ) {
-                $sucess_msg = 'Comments were added.';
+                //$sucess_msg = 'Comments were added.';
+                header('Location: display_results.php');
             } else {
                 $error_msgs[] = 'Comments were NOT added.';
             }
@@ -58,10 +61,10 @@
     
     
     
+    */
     
     
-    
-*/?>
+?>
 
 
 
@@ -78,7 +81,17 @@
     </head>
     <body>
         
-        
+        <?php 
+         if (isset($error_msgs) && count ($error_msgs) > 0) { ?>
+    <h2>Errors:</h2>
+    <ul>
+        <?php 
+         
+        foreach($error_msgs as $error) { ?>
+            <li><?php echo $error; ?></li>
+        <?php } ?>
+    </ul>
+          <?php } ?>
         
         
          <div id="content">
@@ -88,11 +101,11 @@
             <fieldset>
             <legend>Account Information</legend>
                 <label>E-Mail:</label>
-                <input type="text" name="email" value="" class="textbox"/>
+                <input type="text" name="email" value="<?php echo $email; ?>" class="textbox"/>
                 <br />
 
                 <label>Phone Number:</label>
-                <input type="text" name="phone" value="" class="textbox"/>
+                <input type="text" name="phone" value="<?php echo $phone; ?>" class="textbox"/>
             </fieldset>
 
             <fieldset>

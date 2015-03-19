@@ -50,7 +50,7 @@ function displaySucessMsg($msg) {
 function addUser($email,$phone,$heard_from,$contact_via,$comments) {
     // remember to change the port
     $db = new PDO("mysql:host=localhost;dbname=phpclasswinter2015; port=3307;", "root", "");
-    $dbs = $db->prepare('insert into account set email = :email, phone = :phone, heard = :heard_from, contact = :contact_via, comments = :comments'); 
+    $dbs = $db->prepare('insert into account set email = :email, phone = :phone, heard = :heard, contact = :contact, comments = :comments'); 
 
     // you must bind the data before you execute
     $dbs->bindParam(':email', $email, PDO::PARAM_STR);

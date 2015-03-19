@@ -1,7 +1,21 @@
 <?php
-include'./functions.php';
 
-        if ( !empty($_POST) ) {
+/*Joshua Grizzel*/
+
+
+include './functions.php';
+    
+    $error_msgs = array();
+    $sucess_msg = '';
+    
+    
+    $email = '';
+    $phone = '';
+    $heard_from = '';
+    $contact_via = '';
+    $comments = '';
+    
+     if ( !empty($_POST) ) {
         // collect the data
         $email = filter_input(INPUT_POST, 'email');
         $phone = filter_input(INPUT_POST, 'phone');
@@ -37,10 +51,39 @@ include'./functions.php';
             } else {
                 $error_msgs[] = 'Comments were NOT added.';
             }
+        }else{
+        include'./index.php';
+        exit();
         }
         
-        
     }
+    
+    
+    
+    
+    
+    
+
+
+
+ if (empty ($error_msgs)){
+     
+        $email = filter_input(INPUT_POST, 'email');
+        $phone = filter_input(INPUT_POST, 'phone');
+        $heard_from = filter_input(INPUT_POST, 'heard_from');
+        $contact_via = filter_input(INPUT_POST, 'contact_via');
+        $comments = filter_input(INPUT_POST, 'comments');
+     
+     
+        
+        /*$email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $heard_from = $_POST['heard_from'];
+        $contact_via = $_POST['contact_via'];
+        $comments = $_POST['comments'];*/
+ }
+
+
 ?>
 
 
@@ -52,24 +95,25 @@ include'./functions.php';
          <title>Mailing List Results</title>
         <link rel="stylesheet" type="text/css" href="main.css"/>
     </head>
-    <body>
+    <body>      
+        
        <div id="content">
             <h1>Account Information</h1>
 
             <label>Email Address:</label>
-            <span></span><br />
+            <span><?php echo htmlspecialchars($email); ?></span><br />
             
              <label>Phone:</label>
-            <span></span><br />
+            <span><?php echo $phone; ?></span><br />
 
             <label>Heard From:</label>
-            <span></span><br />
+            <span><?php echo $heard_from; ?></span><br />
 
             <label>Contact Via:</label>
-            <span></span><br /><br />
+            <span><?php echo $contact_via; ?></span><br /><br />
 
             <span>Comments:</span><br />
-            <span></span><br />
+            <span><?php echo $comments; ?></span><br />
 
         </div>
     </body>
