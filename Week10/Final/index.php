@@ -16,6 +16,11 @@
         $contact_via = filter_input(INPUT_POST, 'contact_via');
         $comments = filter_input(INPUT_POST, 'comments');
         
+        
+       // $comments = htmlspecialchars($comments);
+        $checked = 'checked="checked"';
+        $selected = 'selected="selected"';
+        
     //$email = '';
     //$phone = '';
     //$heard_from = '';
@@ -112,22 +117,62 @@
             <legend>Settings</legend>
 
                 <p>How did you hear about us?</p>
-                <input type="radio" name="heard_from" value="Search Engine" />
+                <input type="radio" name="heard_from" value="Search Engine" 
+                       <?php
+        if ( $heard_from == 'Search Engine' ) {
+           echo $checked;
+        }
+        ?>
+                       />
                 Search engine<br />
-                <input type="radio" name="heard_from" value="Friend" />
+                <input type="radio" name="heard_from" value="Friend" 
+                       
+                       <?php
+        if ( $heard_from == 'Friend' ) {
+           echo $checked;
+        }
+        ?>
+                       
+                       />
                 Word of mouth<br />
-                <input type=radio name="heard_from" value="Other" />
+                <input type=radio name="heard_from" value="Other" 
+                       
+                       <?php
+        if ( $heard_from == 'Other' ) {
+           echo $checked;
+        }
+        ?>
+                       
+                       />
                 Other<br />
 
                 <p>Contact via:</p>
                 <select name="contact_via">
-                        <option value="email">Email</option>
-                        <option value="text">Text Message</option>
-                        <option value="phone">Phone</option>
+                        <option value="email"
+                                <?php
+        if ( $contact_via == 'Email' ) {
+            echo $selected;
+        }
+        ?>
+                                >Email</option>
+                        <option value="text"
+                                <?php
+        if ( $contact_via == 'text' ) {
+            echo $selected;
+        }
+        ?>
+                                >Text Message</option>
+                        <option value="phone"
+                                <?php
+        if ( $contact_via == 'phone' ) {
+            echo $selected;
+        }
+        ?>
+                                >Phone</option>
                 </select>
 
                 <p>Comments: (optional)</p>
-                <textarea name="comments" rows="4" cols="50"></textarea>
+                <textarea name="comments" rows="4" cols="50"><?php echo nl2br($comments); ?></textarea>
             </fieldset>
 
             <input type="submit" value="Submit" />

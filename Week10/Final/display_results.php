@@ -23,6 +23,8 @@ include './functions.php';
         $contact_via = filter_input(INPUT_POST, 'contact_via');
         $comments = filter_input(INPUT_POST, 'comments');
         
+        //$comments = htmlspecialchars($comments);
+        
         
         //Validate the data
         if ( !emailIsValid($email) ) {
@@ -73,6 +75,10 @@ include './functions.php';
         $heard_from = filter_input(INPUT_POST, 'heard_from');
         $contact_via = filter_input(INPUT_POST, 'contact_via');
         $comments = filter_input(INPUT_POST, 'comments');
+        
+        $email =  htmlspecialchars($email);
+        $phone =  htmlspecialchars($phone);
+        $comments = htmlspecialchars($comments);
      
      
         
@@ -113,7 +119,7 @@ include './functions.php';
             <span><?php echo $contact_via; ?></span><br /><br />
 
             <span>Comments:</span><br />
-            <span><?php echo $comments; ?></span><br />
+            <span><?php echo nl2br($comments); ?></span><br />
 
         </div>
     </body>
